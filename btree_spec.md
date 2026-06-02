@@ -631,12 +631,3 @@ A: Yes. You can iterate with `for offset in range(0, file_size, 32)` to read eac
 
 **Q: Could a splitAxis value of 0xFFFF be misidentified as a leaf?**  
 A: No. splitAxis only takes values 0, 1, or 2 and cannot reach 0xFFFF. The leaf marker is located in uint16_high (bytes 30-31). For internal nodes, splitAxis is read as a full uint32 whose upper 16 bits are always 0.
-
----
-
-## 14. Reference Implementation
-
-Source code locations:
-- Writing: `src/Util/MeshUtils.cpp` → `populateBVHBuffer()`, `SaveBVHDataToBin()`
-- Data structures: `src/Util/MeshUtils.h` → `BVHNode`, `TriMesh`, `BYTES_PER_NODE`
-- Construction: `src/Util/MeshUtils.cpp` → `splitBVHNode()`, `buildBVH()`
